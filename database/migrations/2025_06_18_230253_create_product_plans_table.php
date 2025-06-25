@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateProductPlansTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+public function up()
+{
+    Schema::create('product_plans', function (Blueprint $table) {
+        $table->id();
+        $table->string('product');
+        $table->string('title');
+        $table->string('price');
+        $table->string('period')->nullable();
+        $table->text('description')->nullable();
+        $table->json('features')->nullable();
+        $table->boolean('popular')->default(false);
+        $table->timestamps();
+    });
+}
+
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('product_plans');
+    }
+}
