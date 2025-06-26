@@ -5,7 +5,7 @@ use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\NewsController;
 use App\Http\Controllers\Site\AboutController;
 use App\Http\Controllers\Site\ContactController;
-use App\Http\Controllers\Site\ServiceController;
+use App\Http\Controllers\Site\OurworkController;
 use App\Http\Controllers\Site\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 
@@ -32,7 +32,7 @@ Route::get('/about', [AboutController::class, 'index'])->name('site.about.index'
 /* contacto */
 Route::get('/contact', [ContactController::class, 'index'])->name('site.contact.index');
 /* contacto */
-Route::get('/service', [ServiceController::class, 'index'])->name('site.service.index');
+Route::get('/ourwork', [OurworkController::class, 'index'])->name('site.ourwork.index');
 /* product*/
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 
