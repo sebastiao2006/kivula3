@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Letra K com partículas</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0a0a0a;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
+
+    window.addEventListener("resize", () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const total = 1500;
+
+    // Função para gerar pontos dentro do "K"
+    // Cria 3 grupos: barra vertical, diagonal superior e diagonal inferior
+
+    function randomRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    for (let i = 0; i < total; i++) {
+      let x, y, z;
+
+      if (i < total * 0.4) {
+        // Barra vertical do K (40%)
+        x = randomRange(-30, -10);
+        y = randomRange(-100, 100);
+        z = randomRange(-30, 30);
+      } else if (i < total * 0.7) {
+        // Diagonal superior (30%)
+        x = randomRange(-10, 60);
+        y = randomRange(-100, 0);
+        z = randomRange(-30, 30);
+        // Ajustar para formar diagonal: y deve subir enquanto x aumenta
+        y = -100 + ((60 - x) * (100 / 70));
+      } else {
+        // Diagonal inferior (30%)
+        x = randomRange(-10, 60);
+        y = randomRange(0, 100);
+        z = randomRange(-30, 30);
+        // Ajustar para formar diagonal inferior
+        y = 100 - ((60 - x) * (100 / 70));
+      }
+
+      particles.push({ x, y, z });
+    }
+
+    let angleX = 0;
+    let angleY = 0;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let isHovering = false;
+
+    canvas.addEventListener("mousemove", e => {
+      mouseX = e.clientX - w / 2;
+      mouseY = e.clientY - h / 2;
+      isHovering = true;
+    });
+
+    canvas.addEventListener("mouseleave", () => {
+      isHovering = false;
+    });
+
+    function rotate3D(point, angleX, angleY) {
+      // Rotação no eixo Y
+      let x = point.x * Math.cos(angleY) - point.z * Math.sin(angleY);
+      let z = point.x * Math.sin(angleY) + point.z * Math.cos(angleY);
+
+      // Rotação no eixo X
+      let y = point.y * Math.cos(angleX) - z * Math.sin(angleX);
+      z = point.y * Math.sin(angleX) + z * Math.cos(angleX);
+
+      return { x, y, z };
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+
+      angleX += 0.003;
+      angleY += 0.004;
+
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+
+        let distanceToMouse = Math.hypot(mouseX - p.x, mouseY - p.y);
+
+        // Repulsão suave ao passar o mouse
+        let scale = 1;
+        if (isHovering && distanceToMouse < 100) {
+          scale = 1.7;
+        }
+
+        const rotated = rotate3D(p, angleX, angleY);
+        const perspective = 400 / (400 + rotated.z);
+        const x2d = rotated.x * perspective * scale + w / 2;
+        const y2d = rotated.y * perspective * scale + h / 2;
+        const size = perspective * 2;
+
+        ctx.beginPath();
+        ctx.arc(x2d, y2d, size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 123, 255, ${perspective})`;
+        ctx.fill();
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+</body>
+</html>

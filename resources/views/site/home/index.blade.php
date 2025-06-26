@@ -4,219 +4,300 @@
 
 <main class="main">
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero section accent-background">
 
-    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100" id="particles-js">
-
-
-      <div class="row gy-5 justify-content-between">
-        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h2><span>Welcome to </span><span class="accent">Kivula</span></h2>
-          <p>Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
-          <div class="d-flex">
-            <a href="#about" class="btn-get-started">Agendar Reunião</a>
-            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Assistir Video</span></a>
-          </div>
-        </div>
-        <div class="col-lg-5 order-1 order-lg-2">
-          <img src="{{ asset('assets/img/hero-im.svg') }}" class="img-fluid" alt="">
-        </div>
-      </div>
-  
-      <main id="principal">      
-      </main>
-      <div id="particles-js"></div>
-      <script src="{{ asset('assets/js/particles.min.js') }}"></script>
-  
-  
-      <script>
-        particlesJS(
-            {
-                "particles": {
-                    "number": {
-                        "value": 185,
-                        "density": {
-                            "enable": true,
-                            "value_area": 800
-                        }
-                    },
-                    "color": {
-                        "value": "#ffffff"
-                    },
-                    "shape": {
-                        "type": "circle",
-                        "stroke": {
-                            "width": 0,
-                            "color": "#000000"
-                        },
-                        "polygon": {
-                            "nb_sides": 5
-                        },
-                        "image": {
-                            "src": "img/github.svg",
-                            "width": 100,
-                            "height": 100
-                        }
-                    },
-                    "opacity": {
-                        "value": 0.5,
-                        "random": false,
-                        "anim": {
-                            "enable": false,
-                            "speed": 1,
-                            "opacity_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "size": {
-                        "value": 3,
-                        "random": true,
-                        "anim": {
-                            "enable": false,
-                            "speed": 40,
-                            "size_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "line_linked": {
-                        "enable": true,
-                        "distance": 150,
-                        "color": "#ffffff",
-                        "opacity": 0.4,
-                        "width": 1
-                    },
-                    "move": {
-                        "enable": true,
-                        "speed": 11.22388442605866,
-                        "direction": "none",
-                        "random": false,
-                        "straight": false,
-                        "out_mode": "out",
-                        "bounce": false,
-                        "attract": {
-                            "enable": false,
-                            "rotateX": 600,
-                            "rotateY": 1200
-                        }
-                    }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": {
-                        "onhover": {
-                            "enable": false,
-                            "mode": "repulse"
-                        },
-                        "onclick": {
-                            "enable": true,
-                            "mode": "push"
-                        },
-                        "resize": true
-                    },
-                    "modes": {
-                        "grab": {
-                            "distance": 400,
-                            "line_linked": {
-                                "opacity": 1
-                            }
-                        },
-                        "bubble": {
-                            "distance": 400,
-                            "size": 40,
-                            "duration": 2,
-                            "opacity": 8,
-                            "speed": 3
-                        },
-                        "repulse": {
-                            "distance": 200,
-                            "duration": 0.4
-                        },
-                        "push": {
-                            "particles_nb": 4
-                        },
-                        "remove": {
-                            "particles_nb": 2
-                        }
-                    }
-                },
-                "retina_detect": true
-            }
-        )
-    </script>
-  
-  
-
+<!-- Hero Section Personalizado -->
+<section class="hero-section">
+  <div class="hero-container" style="display:flex; gap: 2rem; padding: 0.5rem 2rem 2rem 2rem;">
+    <div class="hero-left" style="flex:1; color:#fff;">
+      <h1>Se você pode imaginar, nós podemos projectar!</h1>
+      <p>Tenha uma equipe disponível a qualquer momento para entender todas as necessidades do seu projeto ou negócio.</p>
+      <a href="#contact" class="hero-btn" style="display:inline-block; padding: 10px 20px; background:#007bff; color:#fff; text-decoration:none; border-radius:5px;">Quero começar agora</a>
     </div>
- 
-    <div class="icon-boxes position-relative" data-aos="fade-up" data-aos-delay="200">
-      <div class="container position-relative">
-        <div class="row gy-4 mt-5">
 
-          <div class="col-xl-3 col-md-6">
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-easel"></i></div>
-              <h4 class="title"><a href="" class="stretched-link">Portfolio</a></h4>
-            </div>
-          </div><!--End Icon Box -->
+    <div class="hero-right" style="flex:1; position:relative; height:400px;">
+      <canvas id="canvas" style="position:absolute; top:0; left:0; width:100%; height:100%;"></canvas>
+    </div>
+  </div>
+</section>
 
-          <div class="col-xl-3 col-md-6">
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-gem"></i></div>
-              <h4 class="title"><a href="" class="stretched-link">Lading page</a></h4>
-            </div>
-          </div><!--End Icon Box -->
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
 
-          <div class="col-xl-3 col-md-6">
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-geo-alt"></i></div>
-              <h4 class="title"><a href="" class="stretched-link">websites-IA</a></h4>
-            </div>
-          </div><!--End Icon Box -->
+  let w, h;
 
-          <div class="col-xl-3 col-md-6">
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-command"></i></div>
-              <h4 class="title"><a href="" class="stretched-link">Nemo Enim</a></h4>
-            </div>
-          </div><!--End Icon Box -->
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    w = canvas.width = rect.width;
+    h = canvas.height = rect.height;
+  }
+  resize();
+  window.addEventListener('resize', resize);
 
-        </div>
+  const particles = [];
+  const radius = 150;
+  const total = 1000;
+
+  for (let i = 0; i < total; i++) {
+    const phi = Math.acos(2 * Math.random() - 1);
+    const theta = Math.random() * 2 * Math.PI;
+
+    const x = radius * Math.sin(phi) * Math.cos(theta);
+    const y = radius * Math.sin(phi) * Math.sin(theta);
+    const z = radius * Math.cos(phi);
+
+    particles.push({ x, y, z });
+  }
+
+  let angleX = 0;
+  let angleY = 0;
+
+  // Inicialmente o mouse fora da tela
+  let mouseX = -1000;
+  let mouseY = -1000;
+  let isHovering = false;
+
+  // Vamos testar se o evento está disparando
+  canvas.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    mouseX = e.clientX - rect.left;
+    mouseY = e.clientY - rect.top;
+    isHovering = true;
+    // DEBUG: mostrar coords no console
+    console.log('Mouse move:', mouseX, mouseY);
+  });
+
+  canvas.addEventListener('mouseleave', () => {
+    isHovering = false;
+    mouseX = -1000;
+    mouseY = -1000;
+  });
+
+  function rotate3D(point, angleX, angleY) {
+    let x = point.x * Math.cos(angleY) - point.z * Math.sin(angleY);
+    let z = point.x * Math.sin(angleY) + point.z * Math.cos(angleY);
+
+    let y = point.y * Math.cos(angleX) - z * Math.sin(angleX);
+    z = point.y * Math.sin(angleX) + z * Math.cos(angleX);
+
+    return { x, y, z };
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+
+    angleX += 0.003;
+    angleY += 0.004;
+
+    for (let p of particles) {
+      const rotated = rotate3D(p, angleX, angleY);
+      const perspective = 400 / (400 + rotated.z);
+
+      const baseX = rotated.x * perspective + w / 2;
+      const baseY = rotated.y * perspective + h / 2;
+
+      const dist = Math.hypot(mouseX - baseX, mouseY - baseY);
+
+      let offsetX = 0;
+      let offsetY = 0;
+
+      if (isHovering && dist < 100) {
+        const dx = baseX - mouseX;
+        const dy = baseY - mouseY;
+        const force = (100 - dist) / 100 * 50;
+        const angle = Math.atan2(dy, dx);
+        offsetX = Math.cos(angle) * force;
+        offsetY = Math.sin(angle) * force;
+      }
+
+      const finalX = baseX + offsetX;
+      const finalY = baseY + offsetY;
+
+      const size = perspective * 3;
+
+      ctx.beginPath();
+      ctx.arc(finalX, finalY, size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0, 123, 255, ${perspective})`;
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+</script>
+<!-- Hero Section Personalizado -->
+
+
+<!-- Trilha Section -->
+<section class="section-trilha">
+  <div class="trilha-container">
+    <div class="trilha-header">
+      <div class="trilha-intro">
+        <span class="trilha-tag">Trilha</span>
+        <h2 class="trilha-titulo">
+          Descubra como a Tchitunda pode <br>
+          ajudar você a transformar suas <br>
+          ideias em realidade.
+        </h2>
+      </div>
+      <div class="trilha-desc">
+        <p class="trilha-texto">
+          Reunimos todos as soluções para você <br>
+          entrar no digital. Não sabe por onde <br>
+          começar? A gente te ajuda.
+        </p>
       </div>
     </div>
 
-  </section><!-- /Hero Section -->
+    <div class="trilha-cards">
+      <div class="trilha-card">
+        <div class="trilha-icon-wrapper">
+          <i data-lucide="palette"></i> <!-- Design -->
+        </div>
+        <h3 class="trilha-card-title">Um Design Exclusivo</h3>
+        <p class="trilha-card-desc">Transforme sua visão em um design único.</p>
+        <a href="#" class="trilha-btn">Saiba mais</a>
+      </div>
+
+      <div class="trilha-card">
+        <div class="trilha-icon-wrapper">
+          <i data-lucide="globe"></i> <!-- Site -->
+        </div>
+        <h3 class="trilha-card-title">Site Sob Medida</h3>
+        <p class="trilha-card-desc">Desenvolva um site que reflita sua marca.</p>
+        <a href="#" class="trilha-btn">Saiba mais</a>
+      </div>
+
+      <div class="trilha-card">
+        <div class="trilha-icon-wrapper">
+          <i data-lucide="bar-chart-3"></i> <!-- Marketing -->
+        </div>
+        <h3 class="trilha-card-title">Marketing Estratégico</h3>
+        <p class="trilha-card-desc">Impulsione seu negócio com estratégias eficazes.</p>
+        <a href="#" class="trilha-btn">Saiba mais</a>
+      </div>
+
+      <div class="trilha-card">
+        <div class="trilha-icon-wrapper">
+          <i data-lucide="share-2"></i> <!-- Social Media -->
+        </div>
+        <h3 class="trilha-card-title">Social Media</h3>
+        <p class="trilha-card-desc">Otimize sua presença nas redes sociais.</p>
+        <a href="#" class="trilha-btn">Saiba mais</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Trilha Section -->
+
+
+<!-- Stats Section -->
+<section class="solucoes-section">
+    <div class="solucoes-wrapper">
+      <!-- Texto + Cards -->
+      <div class="solucoes-textos">
+        <div class="solucoes-etiqueta">
+          <span class="barra"></span>
+          <span class="texto">Soluções</span>
+        </div>
+
+        <h2 class="solucoes-titulo">
+          Otimize a execução do seu <strong>Design, Marketing e<br>Website</strong> com a Tchitunda.
+        </h2>
+
+        <div class="solucoes-cards">
+
+          <!-- Card 1 -->
+          <input type="radio" name="card" id="card1" class="card-toggle">
+          <label class="card-item" for="card1">
+            <div class="card-topo">
+              <span class="icone"><i class="ph ph-wrench"></i></span>
+              <span class="titulo">Design</span>
+              <span class="seta"><i class="ph ph-caret-down"></i></span>
+            </div>
+            <div class="card-corpo">
+              <p>
+                Criamos identidades visuais fortes, layouts modernos e designs que se destacam, com foco na experiência do usuário e na comunicação clara.
+              </p>
+            </div>
+          </label>
+
+          <!-- Card 2 -->
+          <input type="radio" name="card" id="card2" class="card-toggle">
+          <label class="card-item" for="card2">
+            <div class="card-topo">
+              <span class="icone"><i class="ph ph-headphones"></i></span>
+              <span class="titulo">Marketing Digital</span>
+              <span class="seta"><i class="ph ph-caret-down"></i></span>
+            </div>
+            <div class="card-corpo">
+              <p>
+                Estratégias personalizadas de marketing digital para aumentar sua visibilidade online, atrair leads e gerar resultados reais.
+              </p>
+            </div>
+          </label>
+
+          <!-- Card 3 -->
+          <input type="radio" name="card" id="card3" class="card-toggle" checked>
+          <label class="card-item" for="card3">
+            <div class="card-topo">
+              <span class="icone"><i class="ph ph-code"></i></span>
+              <span class="titulo">Desenvolvimento de Websites</span>
+              <span class="seta"><i class="ph ph-caret-down"></i></span>
+            </div>
+            <div class="card-corpo">
+              <p>
+                Desenvolvemos websites profissionais e funcionais. Desde a criação de interfaces intuitivas até a
+                otimização para dispositivos móveis, garantimos uma experiência de usuário excepcional.
+              </p>
+            </div>
+          </label>
+
+        </div>
+      </div>
+
+      <!-- Imagem -->
+      <div class="solucoes-imagem">
+        <img src="{{ asset('assets/img/capa15.jpg') }}" alt="Mockup" />
+      </div>
+    </div>
+</section>
+<!-- /Stats Section -->
+
 
   <!-- About Section -->
-  <section id="about" class="about section">
-
-    <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
-      <h2>Sobre Nós<br></h2>
-    </div><!-- End Section Title -->
-
+  <section class="sobre-nos">
     <div class="container">
-
-      <div class="row gy-4">
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-          <h3>Kivula Consultoria de TI</h3>
-{{--           <img src="assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt=""> --}}
-          <p style="font-size: 18px">A Kivula Consultoria de TI é uma empresa especializada em desenvolvimento web com Inteligência Artificial (IA), fornecendo soluções inovadoras e personalizadas  para impulsionar negócios na era digital.</p>
-          <p style="font-size: 18px">Combinamos tecnologia de ponta com IA para criar plataformas web inteligentes, automatizadas e eficientes, proporcionando experiências digitais mais dinâmicas e intuitivas. Nossos serviços incluem desenvolvimento de websites e aplicativos web, integração de IA para automação de processos, chatbots inteligentes, análise preditiva e muito mais.</p>
-        </div>
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
-          <div class="content ps-0 ps-lg-5">
-            <div class="position-relative mt-4">
-              <img src="{{ asset('assets/img/banner-bg1.jpeg') }}" class="img-fluid rounded-4" alt="">
-              <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
-            </div>
-          </div>
-        </div>
+      <div class="intro">
+        <span class="tag">Sobre nós</span>
+        <h2>
+          Somos mais do que a maior e mais completa <br>
+          agência de marketing digital.
+        </h2>
+        <p>
+          Somos uma força inovadora, redefinindo o conceito de agência de marketing ao ultrapassar os limites tradicionais. 
+          Com uma abordagem única e abrangente, não apenas seguimos as tendências do setor, mas também as criamos.
+        </p>
       </div>
 
+      <div class="stats">
+        <div class="stat-box">
+          <h3>+1,300</h3>
+          <p>Clientes satisfeitos</p>
+        </div>
+        <div class="stat-box">
+          <h3>+15</h3>
+          <p>Assinantes</p>
+        </div>
+        <div class="stat-box">
+          <h3>+1,000,000KZ</h3>
+          <p>Em anúncios</p>
+        </div>
+      </div>
     </div>
-
-  </section><!-- /About Section -->
+  </section>
+  <!-- /About Section -->
 
   <!-- Clients Section -->
   <section id="clients" class="clients section">
@@ -271,580 +352,255 @@
 
     </div>
 
-  </section><!-- /Clients Section -->
-
-  <!-- Services Section -->
-  <section id="services" class="services section">
-
-    <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
-      <h2>Nossos Serviços</h2>
-    </div><!-- End Section Title -->
-
-    <div class="container">
-
-      <div class="row gy-4">
-
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="service-item  position-relative">
-            <div class="icon">
-              <i class="bi bi-activity"></i>
-            </div>
-            <h3>Portfolio</h3>
-            <p>A Kivula oferece criação de portfólios personalizados, destacando habilidades e projetos com design moderno e intuitivo. Ideal para profissionais e empresas, garante uma presença digital forte e envolvente.</p>
-            <a href="service-details.html" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div><!-- End Service Item -->
-
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-          <div class="service-item position-relative">
-            <div class="icon">
-              <i class="bi bi-broadcast"></i>
-            </div>
-            <h3>Landing Page</h3>
-            <p>A Kivula oferece serviços de Landing Page, criando páginas atrativas e eficientes para captar leads e impulsionar negócios. Com design responsivo, carregamento rápido e foco na conversão, nossas soluções garantem uma experiência envolvente para o público-alvo.</p>
-            <a href="service-details.html" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div><!-- End Service Item -->
-
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-          <div class="service-item position-relative">
-            <div class="icon">
-              <i class="bi bi-easel"></i>
-            </div>
-            <h3>websites-IA</h3>
-            <p>Desenvolvimento de websites com IA, criando sites inteligentes, personalizados e otimizados para alto desempenho. Utilizamos tecnologia avançada para automação, design dinâmico e experiência interativa, garantindo uma presença digital moderna e eficiente.</p>
-            <a href="service-details.html" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div><!-- End Service Item -->
-
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-          <div class="service-item position-relative">
-            <div class="icon">
-              <i class="bi bi-bounding-box-circles"></i>
-            </div>
-            <h3>Marketing</h3>
-            <p>As soluções de marketing abrangem estratégias personalizadas para aumentar a visibilidade da marca, engajar o público e impulsionar conversões. Com abordagem focada em dados, utilizamos campanhas otimizadas, SEO e gestão de redes sociais para maximizar resultados. </p>
-            <a href="service-details.html" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div><!-- End Service Item -->
-
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-          <div class="service-item position-relative">
-            <div class="icon">
-              <i class="bi bi-calendar4-week"></i>
-            </div>
-            <h3>branding</h3>
-            <p>O branding fortalece a identidade da marca, criando uma presença visual e estratégica marcante. Com design diferenciado, identidade visual coerente e comunicação alinhada, o objetivo é tornar a marca reconhecível e memorável no mercado. </p>
-            <a href="service-details.html" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div><!-- End Service Item -->
-
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-          <div class="service-item position-relative">
-            <div class="icon">
-              <i class="bi bi-chat-square-text"></i>
-            </div>
-            <h3>Dolori Architecto</h3>
-            <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
-            <a href="service-details.html" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div><!-- End Service Item -->
-
-      </div>
-
-    </div>
-
-  </section><!-- /Services Section -->
+  </section>
+  <!-- /Clients Section -->
 
 
-  <!-- Stats Section -->
-  <section id="stats" class="stats section">
-
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-      <div class="row gy-4 align-items-center">
-
-        <div class="col-lg-5">
-          <img src="{{ asset('assets/img/stats-img.svg') }}" alt="" class="img-fluid">
-        </div>
-
-        <div class="col-lg-7">
-
-          <div class="row gy-4">
-
-            <div class="col-lg-6">
-              <div class="stats-item d-flex">
-                <i class="bi bi-emoji-smile flex-shrink-0"></i>
-                <div>
-                  <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                  <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
-                </div>
-              </div>
-            </div><!-- End Stats Item -->
-
-            <div class="col-lg-6">
-              <div class="stats-item d-flex">
-                <i class="bi bi-journal-richtext flex-shrink-0"></i>
-                <div>
-                  <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                  <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
-                </div>
-              </div>
-            </div><!-- End Stats Item -->
-
-            <div class="col-lg-6">
-              <div class="stats-item d-flex">
-                <i class="bi bi-headset flex-shrink-0"></i>
-                <div>
-                  <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-                  <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
-                </div>
-              </div>
-            </div><!-- End Stats Item -->
-
-            <div class="col-lg-6">
-              <div class="stats-item d-flex">
-                <i class="bi bi-people flex-shrink-0"></i>
-                <div>
-                  <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-                  <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
-                </div>
-              </div>
-            </div><!-- End Stats Item -->
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section><!-- /Stats Section -->
-
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="portfolio section">
-
-    <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
-      <h2>Portfolio</h2>
-    </div><!-- End Section Title -->
-
-    <div class="container">
-
-      <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-        <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-          <li data-filter="*" class="filter-active">Todos</li>
-          <li data-filter=".filter-app">Portfolio</li>
-          <li data-filter=".filter-product">Website</li>
-          <li data-filter=".filter-branding">SGE</li>
-          <li data-filter=".filter-books">Landing Page</li>
-        </ul><!-- End Portfolio Filters -->
-
-        <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-  @foreach($portfolios as $item)
-    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ $item->category }}">
-      <div class="portfolio-content h-100">
-        <a href="{{ asset('storage/' . $item->image) }}" data-gallery="portfolio-gallery-{{ $item->category }}" class="glightbox">
-          <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid" alt="{{ $item->title }}">
-        </a>
-        <div class="portfolio-info">
-          <h4>
-            @if($item->link)
-              <a href="{{ $item->link }}" target="_blank">{{ $item->title }}</a>
-            @else
-              {{ $item->title }}
-            @endif
-          </h4>
-          <p>{{ $item->description }}</p>
-        </div>
-      </div>
-    </div>
-  @endforeach
-</div>
 
 
-        {{-- <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-            <div class="portfolio-content h-100">
-              <a href="assets/img/portfolio/app-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="assets/img/portfolio/app1.png" class="img-fluid" alt=""></a>
-              <div class="portfolio-info">
-                <h4><a href="portfolio-details.html" title="More Details">App 1</a></h4>
-                <p>Lorem ipsum, dolor sit amet consectetur</p>
-              </div>
-            </div>
-          </div><!-- End Portfolio Item -->
 
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-            <div class="portfolio-content h-100">
-              <a href="assets/img/portfolio/product-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="assets/img/portfolio/app3.png" class="img-fluid" alt=""></a>
-              <div class="portfolio-info">
-                <h4><a href="portfolio-details.html" title="More Details">Product 1</a></h4>
-                <p>Lorem ipsum, dolor sit amet consectetur</p>
-              </div>
-            </div>
-          </div><!-- End Portfolio Item -->
-
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-            <div class="portfolio-content h-100">
-              <a href="assets/img/portfolio/branding-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="assets/img/portfolio/app4.png" class="img-fluid" alt=""></a>
-              <div class="portfolio-info">
-                <h4><a href="portfolio-details.html" title="More Details">Branding 1</a></h4>
-                <p>Lorem ipsum, dolor sit amet consectetur</p>
-              </div>
-            </div>
-          </div><!-- End Portfolio Item -->
-
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-            <div class="portfolio-content h-100">
-              <a href="assets/img/portfolio/books-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="assets/img/portfolio/app5.png" class="img-fluid" alt=""></a>
-              <div class="portfolio-info">
-                <h4><a href="portfolio-details.html" title="More Details">Books 1</a></h4>
-                <p>Lorem ipsum, dolor sit amet consectetur</p>
-              </div>
-            </div>
-          </div><!-- End Portfolio Item -->
-
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-            <div class="portfolio-content h-100">
-              <a href="assets/img/portfolio/app-2.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="assets/img/portfolio/app2.png" class="img-fluid" alt=""></a>
-              <div class="portfolio-info">
-                <h4><a href="portfolio-details.html" title="More Details">App 2</a></h4>
-                <p>Lorem ipsum, dolor sit amet consectetur</p>
-              </div>
-            </div>
-          </div><!-- End Portfolio Item -->
-
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-            <div class="portfolio-content h-100">
-              <a href="assets/img/portfolio/product-2.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="assets/img/portfolio/app6.png" class="img-fluid" alt=""></a>
-              <div class="portfolio-info">
-                <h4><a href="portfolio-details.html" title="More Details">Product 2</a></h4>
-                <p>Lorem ipsum, dolor sit amet consectetur</p>
-              </div>
-            </div>
-          </div><!-- End Portfolio Item -->
-
-        </div> --}}<!-- End Portfolio Container -->
-
-      </div>
-
-    </div>
-
-  </section><!-- /Portfolio Section -->
-
-  <!-- Team Section -->
-  <section id="team" class="team section">
-
-    <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
-      <h2>Parceiros</h2>
-    </div><!-- End Section Title -->
-
-    <div class="container">
-  
-      <div class="partners-grid">
-          @foreach($partners as $partner)
-              <div class="card">
-                  <div class="card-image">
-                      @if($partner->logo)
-                          <img src="{{ asset('storage/' . $partner->logo) }}" alt="{{ $partner->name }}">
-                      @else
-                          <div class="no-logo">Sem Logo</div>
-                      @endif
-                  </div>
-                  <div class="card-content">
-                      <h4>{{ $partner->name }}</h4>
-                      <p>{{ $partner->description }}</p>
-                  </div>
-                  <div class="card-footer">
-                      @if($partner->site)
-                          <a href="{{ $partner->site }}" target="_blank" class="card-link">Visitar site</a>
-                      @else
-                          <span class="no-site">Sem site</span>
-                      @endif
-                  </div>
-              </div>
-          @endforeach
-      </div>
-  </div>
-    
-
-    </div>
-
-  </section><!-- /Team Section -->
-
-  <!-- Pricing Section -->
-  {{-- <section id="pricing" class="pricing section">
-
-    <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
-      <h2>Pricing</h2>
-      <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-    </div><!-- End Section Title -->
-
-    <div class="container" data-aos="zoom-in" data-aos-delay="100">
-
-      <div class="row g-4">
-
-        <div class="col-lg-4">
-          <div class="pricing-item">
-            <h3>Free Plan</h3>
-            <div class="icon">
-              <i class="bi bi-box"></i>
-            </div>
-            <h4><sup>$</sup>0<span> / month</span></h4>
-            <ul>
-              <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-              <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-              <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-              <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
-              <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-            </ul>
-            <div class="text-center"><a href="#" class="buy-btn">Buy Now</a></div>
-          </div>
-        </div><!-- End Pricing Item -->
-
-        <div class="col-lg-4">
-          <div class="pricing-item featured">
-            <h3>Business Plan</h3>
-            <div class="icon">
-              <i class="bi bi-rocket"></i>
-            </div>
-
-            <h4><sup>$</sup>29<span> / month</span></h4>
-            <ul>
-              <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-              <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-              <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-              <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
-              <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-            </ul>
-            <div class="text-center"><a href="#" class="buy-btn">Buy Now</a></div>
-          </div>
-        </div><!-- End Pricing Item -->
-
-        <div class="col-lg-4">
-          <div class="pricing-item">
-            <h3>Developer Plan</h3>
-            <div class="icon">
-              <i class="bi bi-send"></i>
-            </div>
-            <h4><sup>$</sup>49<span> / month</span></h4>
-            <ul>
-              <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-              <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-              <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-              <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
-              <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-            </ul>
-            <div class="text-center"><a href="#" class="buy-btn">Buy Now</a></div>
-          </div>
-        </div><!-- End Pricing Item -->
-
-      </div>
-
-    </div>
-
-  </section> --}}<!-- /Pricing Section -->
 
   <!-- Faq Section -->
-  <section id="faq" class="faq section">
+  <section id="faq" class="faq-section">
+    <div class="faq-wrapper">
+      <div class="faq-conteudo">
 
-    <div class="container">
+        <div class="faq-etiqueta">
+          <span class="barra"></span>
+          <span class="texto">Por que devo escolher a Tchitunda?</span>
+        </div>
 
-      <div class="row gy-4">
+        <h2 class="faq-titulo">Projectando o seu <strong>Negócio</strong></h2>
 
-        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="content px-xl-5">
-            <h3><span>Perguntas frequentes </span><strong>Questões</strong></h3>
+        <p class="faq-intro">
+          Em um cenário digital cada vez mais competitivo, escolher o parceiro certo para desenvolver e fortalecer sua marca é crucial.
+        </p>
+
+        <!-- Bloco 1 -->
+        <div class="faq-item">
+          <div class="faq-icon">
+            <i class="ph ph-shield-check"></i>
+          </div>
+          <div class="faq-textos">
+            <h3 class="faq-subtitulo">Expertise em Desenvolvimento de Marcas Digitais</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+              Com mais de 5 anos de experiência, oferecemos um profundo conhecimento no desenvolvimento e implementação de marcas no ambiente digital.
+              Nossa abordagem, focada na arte e na resolução de problemas, garante que cada projeto seja único, impactante e alinhado com os objetivos estratégicos da empresa.
             </p>
           </div>
         </div>
 
-        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="faq-container">
-            <div class="faq-item faq-active">
-              <h3><span class="num">1.</span> <span> O que é a Kivula?</span></h3>
-              <div class="faq-content">
-                <p>A Kivula é uma consultoria de TI especializada no desenvolvimento de soluções web, operando 100% online e incorporando inteligência artificial para otimizar seus projetos.</p>
-              </div>
-              <i class="faq-toggle bi bi-chevron-right"></i>
-            </div><!-- End Faq item-->
-
-            <div class="faq-item">
-              <h3><span class="num">2.</span> <span>Quais serviços a Kivula oferece?</span></h3>
-              <div class="faq-content">
-                <p>A empresa desenvolve sites, plataformas web e sistemas automatizados, além de fornecer consultoria e suporte em TI.</p>
-              </div>
-              <i class="faq-toggle bi bi-chevron-right"></i>
-            </div><!-- End Faq item-->
-
-            <div class="faq-item">
-              <h3><span class="num">3.</span> <span>A Kivula atende clientes internacionais?</span></h3>
-              <div class="faq-content">
-                <p>Sim, por ser uma consultoria totalmente digital, a Kivula atende empresas e empreendedores de diferentes países.</p>
-              </div>
-              <i class="faq-toggle bi bi-chevron-right"></i>
-            </div><!-- End Faq item-->
-
-            <div class="faq-item">
-              <h3><span class="num">4.</span> <span>Como a Kivula usa inteligência artificial em seus projetos?</span></h3>
-              <div class="faq-content">
-                <p>A IA é aplicada para automação de processos, melhoria da experiência do usuário, criação de chatbots e análise de dados estratégicos.</p>
-              </div>
-              <i class="faq-toggle bi bi-chevron-right"></i>
-            </div><!-- End Faq item-->
-
-            <div class="faq-item">
-              <h3><span class="num">5.</span> <span>A Kivula oferece suporte após a entrega do projeto?</span></h3>
-              <div class="faq-content">
-                <p>Sim, a empresa garante suporte técnico e manutenção para o funcionamento contínuo das soluções desenvolvidas.</p>
-              </div>
-              <i class="faq-toggle bi bi-chevron-right"></i>
-            </div><!-- End Faq item-->
-
+        <!-- Bloco 2 -->
+        <div class="faq-item">
+          <div class="faq-icon">
+            <i class="ph ph-pencil-simple-line"></i>
           </div>
-
+          <div class="faq-textos">
+            <h3 class="faq-subtitulo">Criatividade e Paixão Infundidas em Cada Projeto</h3>
+            <p>
+              Somos um grupo exclusivo de jovens criativos apaixonados pela arte. Cada projeto que assumimos é movido pelo nosso desejo de superar
+              expectativas e criar soluções visualmente impressionantes e funcionalmente eficazes.
+            </p>
+          </div>
         </div>
+
+        <!-- Bloco 3 -->
+        <div class="faq-item">
+          <div class="faq-icon">
+            <i class="ph ph-lightbulb"></i>
+          </div>
+          <div class="faq-textos">
+            <h3 class="faq-subtitulo">Compromisso com a Inovação e Desafios</h3>
+            <p>
+              Estamos constantemente em busca de inovação e novos desafios. Nossa abordagem dinâmica e adaptável nos permite não apenas acompanhar,
+              mas também antecipar as tendências do mercado digital. Ao escolher trabalhar conosco, as empresas podem contar com uma parceria
+              que não só impulsiona sua presença digital, mas também abre novas oportunidades de crescimento e diferenciação no mercado.
+            </p>
+          </div>
+        </div>
+
       </div>
 
+      <div class="faq-imagem">
+        <img src="{{ asset('assets/img/capa16.jpg') }}" alt="Imagem Equipe" />
+      </div>
     </div>
+  </section>
+  <!-- /Faq Section -->
 
-  </section><!-- /Faq Section -->
 
-  <!-- Recent Posts Section -->
-  <section id="recent-posts" class="recent-posts section">
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Postagens recentes do blog</h2>
-  </div>
+<!-- particles Section -->
+{{-- <section id="particles" class="particles section" style="position:relative; height:auto; overflow:hidden;   background: linear-gradient(to right, #0262d1, #2b0486);">
+  <div id="particles-js" style="position:absolute; width:100%; height:90%; top:0; left:0; z-index:0;"></div>
 
-  <div class="container">
-    <div class="row gy-4">
-      @foreach ($news as $item)
-      <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-        <article>
-          <div class="post-img">
-            <img src="{{ asset('storage/' . $item->image) }}" alt="" class="img-fluid">
-          </div>
+  <!-- Conteúdo sobre as partículas -->
+  <div style="position:relative; z-index:1; width:100%; padding:60px 20px;">
+    <div class="container contact-wrapper">
 
-          <p class="post-category">{{ $item->category }}</p>
+      <!-- Suporte ao Cliente -->
+      <div class="contact-support">
+        <span class="contact-label">Apoio ao Cliente</span>
+        <h2 class="contact-title">Ficou com <br><strong>alguma dúvida?</strong></h2>
+        <p class="contact-description">Estamos aqui para esclarecer tudo para você!</p>
+        <a href="#" class="contact-btn contact-btn-primary">Tire todas as suas dúvidas</a>
+      </div>
 
-          <h2 class="title">
-            <a href="#">{{ $item->title }}</a>
-          </h2>
+      <!-- Bate-papo + FAQ -->
+      <div class="contact-chatfaq">
 
-          <div class="d-flex align-items-center">
-            <img src="{{ asset('storage/' . $item->author_image) }}" alt="" class="img-fluid post-author-img flex-shrink-0">
-            <div class="post-meta">
-              <p class="post-author">{{ $item->author_name }}</p>
-              <p class="post-date">
-                <time datetime="{{ $item->date }}">{{ \Carbon\Carbon::parse($item->date)->format('M d, Y') }}</time>
+        <!-- Bate-papo -->
+        <div class="contact-chatbox">
+          <div class="contact-chatcontent">
+            <div class="contact-chatimage">
+              <img src="{{ asset('assets/img/logo1.png') }}" alt="Atendente com notebook">
+            </div>
+            <div class="contact-chattext">
+              <span class="contact-chatlabel">Bate-papo</span>
+              <h3 class="contact-chattitle">Vamos falar sobre o seu próximo projeto.</h3>
+              <p class="contact-chatdesc">
+                Estamos aqui para ouvir sobre o seu próximo projeto. Queremos conhecer suas ideias, entender suas necessidades e colaborar para transformar sua visão em realidade.
               </p>
+              <a href="#" class="contact-btn contact-btn-secondary">Bora começar</a>
             </div>
           </div>
-        </article>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-contact">
+          <div class="faq-contact-item">
+            <button class="faq-contact-toggle">▼</button>
+            <div class="faq-contact-text">
+              <h4>Qual plano da Tchitunda é ideal para o meu negócio?</h4>
+              <p>A Tchitunda oferece planos personalizados de acordo com as necessidades do seu negócio...</p>
+            </div>
+          </div>
+          <div class="faq-contact-item">
+            <button class="faq-contact-toggle">▼</button>
+            <div class="faq-contact-text">
+              <h4>Como a Tchitunda gerencia redes sociais?</h4>
+            </div>
+          </div>
+          <div class="faq-contact-item">
+            <button class="faq-contact-toggle">▼</button>
+            <div class="faq-contact-text">
+              <h4>Como a Tchitunda otimiza landing pages para conversões?</h4>
+            </div>
+          </div>
+          <div class="faq-contact-item">
+            <button class="faq-contact-toggle">▼</button>
+            <div class="faq-contact-text">
+              <h4>Qual assinatura da Tchitunda atende melhor à minha empresa?</h4>
+            </div>
+          </div>
+        </div>
+
       </div>
-      @endforeach
     </div>
   </div>
 </section>
-<!-- /Recent Posts Section -->
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS('particles-js',
+  {
+    "particles": {
+      "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+      "color": { "value": "#fff" },
+      "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+      "opacity": { "value": 0.5, "random": false },
+      "size": { "value": 5, "random": true },
+      "line_linked": { "enable": true, "distance": 150, "color": "#fff", "opacity": 0.4, "width": 1 },
+      "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": { "enable": true, "mode": "repulse" },
+        "onclick": { "enable": true, "mode": "push" },
+        "resize": true
+      },
+      "modes": {
+        "repulse": { "distance": 100 },
+        "push": { "particles_nb": 4 }
+      }
+    },
+    "retina_detect": true
+  });
+</script> --}}
+
+<!-- /particles Section -->
+
 
 <!-- Seção de Contacto -->
-<section id="contact" class="contact section">
+<!-- Seção de Contacto -->
+{{-- <section id="contact" class="contact section">
+  <div class="container contact-wrapper">
 
-  <!-- Título da Seção -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Contacto</h2>
-    <p>Estamos disponíveis para responder às suas questões e prestar apoio sempre que necessário.</p>
-  </div><!-- Fim do Título da Seção -->
-
-  <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-    <div class="row gx-lg-0 gy-4">
-
-      <div class="col-lg-4">
-        <div class="info-container d-flex flex-column align-items-center justify-content-center">
-          <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-            <i class="bi bi-geo-alt flex-shrink-0"></i>
-            <div>
-              <h3>Endereço</h3>
-              <p>Vila Cativa, Luanda - Angola</p>
-            </div>
-          </div><!-- Fim do Item -->
-
-          <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-            <i class="bi bi-telephone flex-shrink-0"></i>
-            <div>
-              <h3>Ligue para nós</h3>
-              <p>+244 999 000 000</p> <!-- Atualize com o número real se tiver -->
-            </div>
-          </div><!-- Fim do Item -->
-
-          <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-            <i class="bi bi-envelope flex-shrink-0"></i>
-            <div>
-              <h3>Envie um email</h3>
-              <p>info@exemplo.com</p> <!-- Atualize com o email real -->
-            </div>
-          </div><!-- Fim do Item -->
-
-          <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
-            <i class="bi bi-clock flex-shrink-0"></i>
-            <div>
-              <h3>Horário de funcionamento:</h3>
-              <p>Seg-Sáb: 11h - 23h</p>
-            </div>
-          </div><!-- Fim do Item -->
-
-        </div>
-
-      </div>
-
-      <div class="col-lg-8">
-        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade" data-aos-delay="100">
-          <div class="row gy-4">
-
-            <div class="col-md-6">
-              <input type="text" name="name" class="form-control" placeholder="Seu Nome" required>
-            </div>
-
-            <div class="col-md-6">
-              <input type="email" class="form-control" name="email" placeholder="Seu Email" required>
-            </div>
-
-            <div class="col-md-12">
-              <input type="text" class="form-control" name="subject" placeholder="Assunto" required>
-            </div>
-
-            <div class="col-md-12">
-              <textarea class="form-control" name="message" rows="8" placeholder="Mensagem" required></textarea>
-            </div>
-
-            <div class="col-md-12 text-center">
-              <div class="loading">A enviar...</div>
-              <div class="error-message"></div>
-              <div class="sent-message">A sua mensagem foi enviada. Obrigado!</div>
-
-              <button type="submit">Enviar Mensagem</button>
-            </div>
-
-          </div>
-        </form>
-      </div><!-- Fim do Formulário de Contacto -->
-
+    <!-- Suporte ao Cliente -->
+    <div class="contact-support">
+      <span class="contact-label">Apoio ao Cliente</span>
+      <h2 class="contact-title">Ficou com <br><strong>alguma dúvida?</strong></h2>
+      <p class="contact-description">Estamos aqui para esclarecer tudo para você!</p>
+      <a href="#" class="contact-btn contact-btn-primary">Tire todas as suas dúvidas</a>
     </div>
 
-  </div>
+    <!-- Bate-papo + FAQ -->
+    <div class="contact-chatfaq">
 
-</section><!-- /Seção de Contacto -->
+      <!-- Bate-papo -->
+      <div class="contact-chatbox">
+        <div class="contact-chatcontent">
+          <div class="contact-chatimage">
+            <img src="https://i.imgur.com/LP9Chrb.png" alt="Atendente com notebook">
+          </div>
+          <div class="contact-chattext">
+            <span class="contact-chatlabel">Bate-papo</span>
+            <h3 class="contact-chattitle">Vamos falar sobre o seu próximo projeto.</h3>
+            <p class="contact-chatdesc">
+              Estamos aqui para ouvir sobre o seu próximo projeto. Queremos conhecer suas ideias, entender suas necessidades e colaborar para transformar sua visão em realidade.
+            </p>
+            <a href="#" class="contact-btn contact-btn-secondary">Bora começar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-contact">
+        <div class="faq-contact-item">
+          <button class="faq-contact-toggle">▼</button>
+          <div class="faq-contact-text">
+            <h4>Qual plano da Tchitunda é ideal para o meu negócio?</h4>
+            <p>A Tchitunda oferece planos personalizados de acordo com as necessidades do seu negócio...</p>
+          </div>
+        </div>
+        <div class="faq-contact-item">
+          <button class="faq-contact-toggle">▼</button>
+          <div class="faq-contact-text">
+            <h4>Como a Tchitunda gerencia redes sociais?</h4>
+          </div>
+        </div>
+        <div class="faq-contact-item">
+          <button class="faq-contact-toggle">▼</button>
+          <div class="faq-contact-text">
+            <h4>Como a Tchitunda otimiza landing pages para conversões?</h4>
+          </div>
+        </div>
+        <div class="faq-contact-item">
+          <button class="faq-contact-toggle">▼</button>
+          <div class="faq-contact-text">
+            <h4>Qual assinatura da Tchitunda atende melhor à minha empresa?</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+ --}}
+<!-- /Seção de Contacto -->
 
 
 </main>
