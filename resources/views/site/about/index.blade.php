@@ -2,6 +2,8 @@
 @section('title', 'Kivula')
 @section('content')
 
+<main>
+
 
 <section class="about-hero">
   <div class="about-container">
@@ -100,7 +102,7 @@
 
     <!-- Texto -->
     <div class="trajectory-text">
-      <span class="trajectory-label">Nossa trajetória</span>
+      <span class="trajectory-label" >Nossa trajetória</span>
       <h2 class="trajectory-title">Uma jornada marcada por criatividade, inovação e crescimento</h2>
       <p class="trajectory-desc">
         A Tchitunda nasceu para simplificar o processo de levar ideias ao digital. Nosso foco é transformar ideias em resultados reais, conectando projetos criativos ao público ideal por meio de serviços digitais, branding e estratégias personalizadas. Nossa missão é ajudar você a transformar suas ideias em realidade e alcançar seus objetivos no digital.
@@ -180,7 +182,7 @@
     font-weight: 600;
     color: #0262d1;
     margin-bottom: 10px;
-    border-left: 4px solid #0262d1;
+
     padding-left: 10px;
     }
 
@@ -207,7 +209,7 @@
 <section class="skills-section">
   <div class="skills-wrapper">
     <div class="skills-left">
-      <h4><i class="ph-fill ph-identification-badge purple-icon"></i> Habilidades</h4>
+     <h4 class="skills-first-title"><i class="ph-fill ph-identification-badge purple-icon"></i> Habilidades</h4>
       <h2>Combinamos tecnologia e talento</h2>
       <p>
         Na Tchitunda, combinamos tecnologia de ponta com o talento criativo da nossa equipe para criar soluções digitais únicas.
@@ -306,7 +308,7 @@
     }
 
     .skills-left h4 {
-            border-left: 4px solid #0262d1;
+
     color: #0262d1;
     font-size: 18px;
     margin-bottom: 10px;
@@ -314,6 +316,30 @@
     align-items: center;
     gap: 6px;
     }
+
+    .skills-first-title {
+    position: relative;
+    padding-left: 16px;
+    color: #0262d1;
+    font-weight: 600;
+    font-size: 18px;
+    }
+
+    .skills-first-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 20px;
+    background-color: #0262d1;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    }
+
 
     .purple-icon {
         
@@ -414,7 +440,7 @@
 <section class="numbers-section">
   <div class="numbers-wrapper">
     <div class="numbers-left">
-      <h4><i class="ph-fill ph-identification-badge purple-icon"></i> Nossos números</h4>
+      <h4 class="skills-first-title" ><i class="ph-fill ph-identification-badge purple-icon"></i> Nossos números</h4>
       <h2>Somos mais do que a maior e mais completa agência de marketing digital.</h2>
       <p>
         Somos pioneiros na evolução do marketing digital, desafiando os padrões convencionais. 
@@ -461,7 +487,7 @@
     }
 
     .numbers-left h4 {
-        border-left: 4px solid #0262d1;
+
     color: #0262d1;
     font-size: 18px;
     margin-bottom: 10px;
@@ -561,7 +587,7 @@
 <section class="faq-section">
   <div class="faq-container">
     <div class="faq-left">
-      <h4><i class="ph-fill ph-identification-badge purple-icon"></i> Apoio ao Cliente</h4>
+      <h4 class="skills-first-title"><i class="ph-fill ph-identification-badge purple-icon"></i> Apoio ao Cliente</h4>
       <h2>Ficou com<br><strong>alguma dúvida?</strong></h2>
       <p>Estamos aqui para esclarecer tudo para você!</p>
       <a href="#" class="faq-btn">Tire todas as suas dúvidas</a>
@@ -629,7 +655,7 @@
         }
 
         .faq-left h4 {
-            border-left: 4px solid #0262d1;
+
         color: #0262d1;;
         font-size: 18px;
         display: flex;
@@ -731,7 +757,7 @@
 
 
 
-
+</main>
 
 
 @endsection

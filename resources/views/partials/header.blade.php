@@ -9,29 +9,48 @@
     </a>
 
 
-    <!-- NAVIGATION -->
-    <nav class="nav-menu">
-      <ul class="nav-links">
-        <li><a href="{{ route('site.home.index') }}">Home</a></li>
-        <li><a href="{{ route('site.about.index') }}">Sobre</a></li>
-        <li><a href="#portfolio">Nossos Trabalhos</a></li>
-        <li><a href="#services">Soluções</a></li>
-        <li><a href="#plans">Planos</a></li>
+<!-- NAVIGATION -->
+<nav class="nav-menu">
+  <ul class="nav-links">
+    <li><a href="{{ route('site.home.index') }}">Home</a></li>
+    <li><a href="{{ route('site.about.index') }}">Sobre</a></li>
+    <li><a href="{{ route('site.ourwork.index') }}">Nossos Trabalhos</a></li>
 
-        <!-- DROPDOWN -->
-        <li class="dropdown">
-          <a href="#">Produtos</a>
-          <ul class="dropdown-content">
-            <li><a href="{{ route('product.show', ['id' => 1]) }}">Landing Page</a></li>
-            <li><a href="{{ route('product.show', ['id' => 2]) }}">Portfolio</a></li>
-            <li><a href="{{ route('product.show', ['id' => 3]) }}">SGE</a></li>
-          </ul>
-        </li>
+    <!-- Soluções com Dropdown -->
+    <li class="dropdown">
+      <a href="#services">Soluções </a>
+      <ul class="dropdown-content">
+        <li><a href="#websites">Websites</a></li>
+        <li><a href="#loja-virtual">Loja Virtual</a></li>
+        <li><a href="#sistemas">Sistemas Web</a></li>
       </ul>
+    </li>
 
-      <!-- CTA BUTTON -->
-      <a href="#contact" class="btn-contact">Contato</a>
-    </nav>
+    <!-- Planos com Dropdown -->
+    <li class="dropdown">
+      <a href="#plans">Planos </a>
+      <ul class="dropdown-content">
+        <li><a href="#plano-basico">Power Web</a></li>
+        <li><a href="#plano-intermediario">Intermediário</a></li>
+        <li><a href="#plano-premium">Premium</a></li>
+      </ul>
+    </li>
+
+    <!-- Produtos (já existente) -->
+    <li class="dropdown">
+      <a href="#">Produtos </a>
+      <ul class="dropdown-content">
+        <li><a href="{{ route('product.show', ['id' => 1]) }}">Landing Page</a></li>
+        <li><a href="{{ route('product.show', ['id' => 2]) }}">Portfolio</a></li>
+        <li><a href="{{ route('product.show', ['id' => 3]) }}">SGE</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <!-- CTA BUTTON -->
+  <a href="#contact" class="btn-contact">Contato</a>
+</nav>
+
   </div>
 </header>
 

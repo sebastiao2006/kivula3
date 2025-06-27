@@ -310,7 +310,7 @@ h6 {
 }
 
 .nav-links a:hover {
-  color: #7300AA;
+  color: #0262d1;
 }
 
 /* DROPDOWN */
@@ -348,7 +348,7 @@ h6 {
 
 .dropdown-content a:hover {
   background-color: #f8f8f8;
-  color: #7300AA;
+  color: #0262d1;
 }
 
 .dropdown:hover .dropdown-content {
